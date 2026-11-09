@@ -1,59 +1,153 @@
 // script.js : 내 영화 평점 통계(콘솔판)
-// 작성자 : 전동찬(2651060)
-const titles = ["미션 파서블", "미션 임파서블", "미션", "미션 임파서블: 로그네이션", "미션 임파서블: 파이널 레코닝"];
-const ratings = [7.40, 7.03, 7.41, 7.20, 7.16];
-const years = [2021, 1996, 1986, 2015, 2025];
+// 작성자 : 전소영  /  이용자 : 여상수
 
-//즉시 실행 함수 만들기
-(function init(){
-    console.log("나는 함수다. 실행이 되었다");
-})();
+const titles = ["극장판 치이카와: 인어 섬의 비밀", "암살자(들)", "실낙원", "타짜: 벨제붑의 노래", "클레이페이스"];
+const ratings = [7.4, 7.2, 8.0, 7.0, 7.5];
+const years = [2026, 2026, 2026, 2026, 2026];
 
-// 화살표함수로 함수 정의 하기
-const gugudan = dan => {
-    for(let i=1; i<=9; i++) {
-        console.log(`${dan} x ${i} = ${dan*i}`);
-    }    
+for(let index in titles) {
+    console.log(`영화 ${index}: ${titles[index]}`);
 }
-gugudan(7);
 
-const add = (num1, num2) => num1 + num2;
-console.log(add(1234,5678));
+const sumsum = (num1, num2) => num1 + num2;
+
+const gugudan = dan => {
+    for(let i=1; i <=9; i++) {
+        console.log(`${dan} x ${i} = ${dan*i}`);
+    }
+}
+
+gugudan( sumsum(2, 5) );
+
+(function init() {
+    console.log("초기화 실행");
+})();
 
 let sum = 0;
 for (let i = 0; i < ratings.length; i++) {
- sum = sum + ratings[i];
+    sum += ratings[i];
 }
 console.log("합계:", sum);
+
 const average = sum / ratings.length;
 console.log("평균:", average);
+
 let max = ratings[0];
 let maxIndex = 0;
 let count = 0;
-for (i = 0; i < ratings.length; i++){
-    if (ratings[i] >= 8) {
-        count++;
-    }
-        
-    if (ratings[i] > max){
+for (let i = 1; i < ratings.length; i++) {
+    if (ratings[i] > max) {
         max = ratings[i];
         maxIndex = i;
     }
+    if (ratings[i] >= 8) {
+        count++;
+    }
 }
-console.log("최고:", titles[maxIndex], max);
-console.log("8점 이상:", count + "편");
-let label;
-for(i = 0; i < 5; i++){
-    if(ratings[i] >= 8.5){
+// console.log("최고:", titles[maxIndex], max);
+// console.log("8점 이상:", count + "편");
+console.log(`최고: ${titles[maxIndex]} ${max}`);
+console.log(`8점 이상: ${count} 편`);
+
+for (let i = 0; i < titles.length; i++) {
+    let label;
+
+    if (ratings[i] >= 8.5) {
         label = "명작";
-    }else if(ratings[i] >= 7){
+    } else if (ratings[i] >= 7.5) {
         label = "추천";
-    }else{
+    } else {
         label = "보통";
     }
+
     console.log(titles[i] + " (" + years[i] + ") : " + ratings[i] + " " + label);
 }
+
 const avgText = average.toFixed(1);
 const best = titles[maxIndex];
-alert(`내 영화 ${titles.length}편, 평균 ${avgText}점, 최고는 ${best}`);
+alert(`내 영화 ${titles.length}편, 평균 ${avgText}점, 최고는 ${best}(${ratings[maxIndex]}점)`);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // document.write("외부 스크립트 방법");
+
+// console.log("콘솔창에 나와야 하는 내용");
+
+// var num = 10 + 20;
+
+// console.log(num);
+
+// let sum = 80 + 1234;
+
+// console.log(sum);
+
+// let string1 = "Hello World";
+// let string2 = "시네마 웹사이트 'Cinema Website'에 오신 것을 환영합니다.";
+
+// console.log(string1, string2);
+
+// let dan = 3;
+// let gugu = 8;
+// let string = `${dan} 곱하기 ${gugu}은/는 ${dan * gugu}입니다.`;
+// console.log(string);
+
+// let studentScore = [50, 60, 70, 80];
+// console.log(studentScore);
+// console.log(studentScore[2]);
+
+// let stdScore = {
+//     koreanScore: 80,
+//     englishScore: 70,
+//     mathScore: 90,
+//     scieneScore: 60,
+// };
+
+// console.log(stdScore);
+// console.log(stdScore.koreanScore);
+
+
+
+// for (let j = 2; j <= 9; j++) {
+//     for (let i = 1; i < 10; i++) {
+//         console.log(`${j} x ${i} = ${j * i}`);
+//     }
+//     conslole.log("---------------");
+// }
