@@ -3,20 +3,14 @@
 
 const average = list => {
     let sum = 0;
-    for (const m of list) {
-        sum += m.rating;
-    }
+    for (const m of list) sum += m.rating;
     return sum / list.length;
 }
 console.log("평균:", average(movies));
 
 const best = list => {
     let top = list[0];
-    for (const m of list) {
-        if (m.rating > top.rating) {
-            top = m;
-        }
-    }
+    for (const m of list) if (m.rating > top.rating) top = m;    
     return top;
 }
 console.log("최고:", best(movies).title);
